@@ -18,17 +18,17 @@ router.get(
   )
 router.get(
   "/:id", 
-  // ensure.validCarExists,
+  ensure.validCarExists,
   controller.readById
   )
 router.patch(
   "/:id", 
   ensure.validBody(carUpdateSchema),
-  // ensure.validCarExists, 
+  ensure.validCarExists, 
   controller.update
   )
 router.delete(
   "/:id",
-  // ensure.validCarExists,
+  ensure.validCarExists,
   controller.delete
   )
