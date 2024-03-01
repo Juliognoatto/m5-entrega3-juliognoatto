@@ -9,12 +9,19 @@ export class CarsService {
     const newCar = await prisma.car.create({
       data: payload
     });
-    return carReturnSchema.parse(newCar)
+    return carReturnSchema.parse(newCar);
   };
 
   public read = async (): Promise<Array<CarReturn>> => {
     const getAll = await prisma.car.findMany();
-    return carReturnSchema.array().parse(getAll)
-  }
+    return carReturnSchema.array().parse(getAll);
+  };
+
+  public readById = async (id: number) => {
+    const cars = await prisma.car.findUnique({
+      where: { id }
+    });
+    return carReturnSchema.parse(cars)
+  };
 
 }

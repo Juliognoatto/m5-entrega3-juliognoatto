@@ -5,12 +5,18 @@ export class CarsController {
   private carsService: CarsService = new CarsService();
 
   public create = async (req: Request, res: Response): Promise<Response> => {
-    const newCar = await this.carsService.create(req.body)
-    return res.status(201).json(newCar)
-  }
+    const newCar = await this.carsService.create(req.body);
+    return res.status(201).json(newCar);
+  };
 
   public read = async (req: Request, res: Response): Promise<Response> => {
     const getAll = await this.carsService.read();
-    return res.status(200).json(getAll)
-  }
+    return res.status(200).json(getAll);
+  };
+
+  public readById = async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params
+    const cars = await this.carsService.readById(parseInt(id));
+    return res.status(200).json(cars)
+  };
 }

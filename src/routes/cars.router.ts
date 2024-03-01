@@ -7,3 +7,4 @@ const controller = new CarsController();
 
 router.post("", controller.create)
 router.get("", controller.read)
+router.get("/:id", controller.readById)
