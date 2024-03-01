@@ -8,3 +8,15 @@ const carSchema = z.object({
   year: z.number().int(),
   km: z.number().int().min(0),
 });
+
+const carCreateSchema = carSchema.omit({ id: true })
+const carReturnSchema = carSchema
+const carUpdateSchema = carCreateSchema
+
+export {
+  carCreateSchema,
+  carReturnSchema,
+  carUpdateSchema
+};
+
+
