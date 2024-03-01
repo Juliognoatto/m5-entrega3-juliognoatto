@@ -22,7 +22,13 @@ export class CarsController {
 
   public update = async (req: Request, res: Response): Promise<Response> => {
     const { id } = req.params
-    const carUpdate = await this.carsService.update(parseInt(id), req.body)
-    return res.status(200).json(carUpdate)
+    const carUpdate = await this.carsService.update(parseInt(id), req.body);
+    return res.status(200).json(carUpdate);
+  };
+
+  public delete = async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params
+    await this.carsService.delete(parseInt(id))
+    return res.status(204).json()
   }
 }

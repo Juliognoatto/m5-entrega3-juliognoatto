@@ -32,4 +32,8 @@ export class CarsService {
     return carReturnSchema.parse(carUpdate);
   };
 
+  public delete = async (id: number): Promise<void> => {
+    await prisma.car.delete({ where: { id } })
+  };
+
 }
