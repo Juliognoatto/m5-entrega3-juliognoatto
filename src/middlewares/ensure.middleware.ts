@@ -1,6 +1,7 @@
 import { Response, Request, NextFunction } from "express";
 import { AppError } from "../errors";
 import { AnyZodObject } from "zod";
+import { prisma } from "../database/prisma";
 
 class ensureMiddleware {
 
@@ -12,6 +13,23 @@ class ensureMiddleware {
       }
       next();
     };
+  };
+
+  public validCarExists = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    const carId = parseInt(req.params.id, 10);
+    const car = await prisma.car.findUnique({
+      where: { id: carId },
+    });
+  
+    if (!car) {
+      throw new AppError("Car not found", 404);
+    } else {
+      return next();
+    }
   };
 
 };

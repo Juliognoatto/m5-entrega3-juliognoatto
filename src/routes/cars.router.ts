@@ -9,7 +9,7 @@ const controller = new CarsController();
 
 router.post(
   "", 
-  ensure.validBody(carCreateSchema), 
+  ensure.validBody(carCreateSchema),
   controller.create
   )
 router.get(
@@ -18,14 +18,17 @@ router.get(
   )
 router.get(
   "/:id", 
+  ensure.validCarExists,
   controller.readById
   )
 router.patch(
   "/:id", 
-  ensure.validBody(carUpdateSchema), 
+  ensure.validBody(carUpdateSchema),
+  ensure.validCarExists, 
   controller.update
   )
 router.delete(
-  "/:id", 
+  "/:id",
+  ensure.validCarExists,
   controller.delete
   )
