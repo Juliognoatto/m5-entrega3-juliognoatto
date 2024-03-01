@@ -12,4 +12,9 @@ export class CarsService {
     return carReturnSchema.parse(newCar)
   };
 
+  public read = async (): Promise<Array<CarReturn>> => {
+    const getAll = await prisma.car.findMany();
+    return carReturnSchema.array().parse(getAll)
+  }
+
 }

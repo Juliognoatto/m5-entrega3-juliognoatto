@@ -8,4 +8,9 @@ export class CarsController {
     const newCar = await this.carsService.create(req.body)
     return res.status(201).json(newCar)
   }
+
+  public read = async (req: Request, res: Response): Promise<Response> => {
+    const getAll = await this.carsService.read();
+    return res.status(200).json(getAll)
+  }
 }
