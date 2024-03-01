@@ -7,6 +7,7 @@
     "start": "node dist/server.js",
     "build": "npx tsc",
     "migrate:deploy": "dotenv -e .env.data -- npx prisma migrate deploy",
+    "migrate:dev": "dotenv -e .env.data -- npx prisma migrate dev",
     "dev": "dotenv -e .env.data -- tsnd --respawn src/server.ts",
     "test": "jest --verbose --runInBand"
   },

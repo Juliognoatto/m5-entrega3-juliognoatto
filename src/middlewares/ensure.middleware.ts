@@ -20,7 +20,7 @@ class ensureMiddleware {
     res: Response,
     next: NextFunction
   ): Promise<void> => {
-    const carId = parseInt(req.params.id, 10);
+    const carId = req.params.id;
     const car = await prisma.car.findUnique({
       where: { id: carId },
     });

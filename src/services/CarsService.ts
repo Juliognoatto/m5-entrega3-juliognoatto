@@ -17,14 +17,14 @@ export class CarsService {
     return carReturnSchema.array().parse(getAll);
   };
 
-  public readById = async (id: number) => {
+  public readById = async (id: string) => {
     const cars = await prisma.car.findUnique({
       where: { id }
     });
     return carReturnSchema.parse(cars);
   };
 
-  public update = async (id: number, payload: CarUpdate): Promise<CarReturn> => {
+  public update = async (id: string, payload: CarUpdate): Promise<CarReturn> => {
     const carUpdate = await prisma.car.update({
       where: { id },
       data: payload
@@ -32,7 +32,7 @@ export class CarsService {
     return carReturnSchema.parse(carUpdate);
   };
 
-  public delete = async (id: number): Promise<void> => {
+  public delete = async (id: string): Promise<void> => {
     await prisma.car.delete({ where: { id } })
   };
 
