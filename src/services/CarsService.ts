@@ -1,5 +1,5 @@
 import { prisma } from "../database/prisma";
-import { CarCreate, CarReturn } from "../interfaces";
+import { CarCreate, CarReturn, CarUpdate } from "../interfaces";
 import { carReturnSchema } from "../schemas";
 
 
@@ -21,7 +21,15 @@ export class CarsService {
     const cars = await prisma.car.findUnique({
       where: { id }
     });
-    return carReturnSchema.parse(cars)
+    return carReturnSchema.parse(cars);
+  };
+
+  public update = async (id: number, payload: CarUpdate): Promise<CarReturn> => {
+    const carUpdate = await prisma.car.update({
+      where: { id },
+      data: payload
+    });
+    return carReturnSchema.parse(carUpdate);
   };
 
 }

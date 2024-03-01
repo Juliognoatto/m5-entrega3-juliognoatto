@@ -19,4 +19,10 @@ export class CarsController {
     const cars = await this.carsService.readById(parseInt(id));
     return res.status(200).json(cars)
   };
+
+  public update = async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params
+    const carUpdate = await this.carsService.update(parseInt(id), req.body)
+    return res.status(200).json(carUpdate)
+  }
 }
