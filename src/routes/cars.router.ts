@@ -2,33 +2,34 @@ import { Router } from "express";
 import { CarsController } from "../controllers";
 import { ensure } from "../middlewares";
 import { carCreateSchema, carUpdateSchema } from "../schemas";
+import { container } from "tsyringe";
 
 
 export const router = Router();
-const controller = new CarsController();
+const controller = container.resolve(CarsController);
 
 router.post(
   "", 
   ensure.validBody(carCreateSchema),
-  controller.create
+  (req, res) => controller.create(req, res)
   )
 router.get(
   "", 
-  controller.read
+  (req, res) => controller.read(req, res)
   )
 router.get(
   "/:id", 
   ensure.validCarExists,
-  controller.readById
+  (req, res) => controller.readById(req, res)
   )
 router.patch(
   "/:id", 
   ensure.validBody(carUpdateSchema),
   ensure.validCarExists, 
-  controller.update
+  (req, res) => controller.update(req, res)
   )
 router.delete(
   "/:id",
   ensure.validCarExists,
-  controller.delete
+  (req, res) => controller.delete(req, res)
   )

@@ -1,8 +1,9 @@
+import { injectable } from "tsyringe";
 import { prisma } from "../database/prisma";
 import { CarCreate, CarReturn, CarUpdate } from "../interfaces";
 import { carReturnSchema } from "../schemas";
 
-
+@injectable()
 export class CarsService {
 
   public create = async (payload: CarCreate): Promise<CarReturn> => {
