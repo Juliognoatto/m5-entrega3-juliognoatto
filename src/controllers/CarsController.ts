@@ -1,10 +1,10 @@
-import { inject, injectable } from "tsyringe";
+import { container, inject, injectable } from "tsyringe";
 import { CarsService } from "../services";
 import { Request, Response } from "express";
 
 @injectable()
 export class CarsController {
-  constructor(@inject("CarsService") private carsService: CarsService) {}
+  private carsService = container.resolve(CarsService)
 
   public create = async (req: Request, res: Response): Promise<Response> => {
     const newCar = await this.carsService.create(req.body);

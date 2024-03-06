@@ -24,6 +24,7 @@
   "homepage": "https://github.com/Juliognoatto/m5-entrega3-juliognoatto#readme",
   "dependencies": {
     "@prisma/client": "^5.10.2",
+    "reflect-metadata": "^0.2.1",
     "tsyringe": "^4.8.0"
   },
   "devDependencies": {
