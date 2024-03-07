@@ -3,10 +3,12 @@ import { CarsController } from "../controllers";
 import { ensure } from "../middlewares";
 import { carCreateSchema, carUpdateSchema } from "../schemas";
 import { container } from "tsyringe";
+import { CarsService } from "../services";
 
 
 export const router = Router();
-const controller = container.resolve(CarsController);
+container.registerSingleton("CarsService", CarsService)
+const controller = container.resolve(CarsController)
 
 router.post(
   "", 
