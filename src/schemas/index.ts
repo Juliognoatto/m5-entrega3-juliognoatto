@@ -1,11 +1,13 @@
 import { 
   carCreateSchema,
   carReturnSchema,
-  carUpdateSchema
+  carUpdateSchema,
+  carSchema
 } from "./cars.schema";
 
 export {
   carCreateSchema,
   carReturnSchema,
-  carUpdateSchema
+  carUpdateSchema,
+  carSchema
 };

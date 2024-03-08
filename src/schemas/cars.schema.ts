@@ -14,6 +14,7 @@ const carReturnSchema = carSchema
 const carUpdateSchema = carCreateSchema
 
 export {
+  carSchema,
   carCreateSchema,
   carReturnSchema,
   carUpdateSchema

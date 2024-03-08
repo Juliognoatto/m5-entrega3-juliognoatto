@@ -1,11 +1,13 @@
 import { 
   CarCreate,
   CarReturn,
-  CarUpdate
+  CarUpdate,
+  Car
 } from "./Cars.interface";
 
 export {
   CarCreate,
   CarReturn,
-  CarUpdate
+  CarUpdate,
+  Car
 };
