@@ -24,3 +24,4 @@ describe("create car", () => {
     await request.post("/cars").send(invalidDataCarMock).expect(400);
  });
 })
+

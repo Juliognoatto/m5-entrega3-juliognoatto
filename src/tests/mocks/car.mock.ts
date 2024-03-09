@@ -1,8 +1,5 @@
-// import { v4 as uuidv4 } from 'uuid';
 
 export const carMock = {
-  // id: uuidv4(),
-  // id: 'fe111d24-1b79-44df-931b-4c9fd5859014',
   name: 'Car name',
   description: 'Car description',
   brand: 'Card brand',
@@ -17,3 +14,4 @@ export const invalidDataCarMock = {
   year: '123',
   km: '123',
 };
+
